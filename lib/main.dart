@@ -13,14 +13,14 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  bool isDark = false;
+  bool isDark = false; //toggle theme night or dark 
   int firstnum = 0;
   int lastnum = 0;
-  String history = "";
+  String history = ""; 
   String res = "";
   String operation = "";
   String textToDisplay = "";
-
+// for button
   void btnClick(String btnval) {
     print(btnval);
 
@@ -31,7 +31,7 @@ class _MyAppState extends State<MyApp> {
         lastnum = 0;
         res = '';
       });
-    } else if (btnval == 'AC') {
+    } else if (btnval == 'AC') {   // clear everything 
       setState(() {
         textToDisplay = '';
         firstnum = 0;
@@ -45,7 +45,7 @@ class _MyAppState extends State<MyApp> {
       } else {
         res = textToDisplay.substring(1);
       }
-    } else if (btnval == '<') {
+    } else if (btnval == '<') { //back space 
       res = textToDisplay.substring(0, textToDisplay.length - 1);
     } else if (btnval == '+' ||
         btnval == '-' ||
@@ -83,6 +83,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    //dark and night themse 
     const lightBg = Color.fromARGB(255, 255, 241, 247);
     const lightNumBtn = Color.fromARGB(255, 231, 117, 165);
     const lightOpBtn = Color.fromARGB(255, 155, 28, 81);
@@ -96,7 +97,7 @@ class _MyAppState extends State<MyApp> {
     const darkEqBtn = Color.fromARGB(255, 236, 72, 153);
     const darkHistoryText = Color.fromARGB(255, 203, 213, 225);
     const darkDisplayText = Color.fromARGB(255, 249, 250, 251);
-
+    //theme toggle button 
     final bg = isDark ? darkBg : lightBg;
     final numBtn = isDark ? darkNumBtn : lightNumBtn;
     final opBtn = isDark ? darkOpBtn : lightOpBtn;
@@ -141,6 +142,7 @@ class _MyAppState extends State<MyApp> {
             children: [
               Container(
                 child: Align(
+                  //history display 
                   alignment: Alignment.centerRight,
                   child: Padding(
                     padding: const EdgeInsets.only(right: 12),
@@ -167,10 +169,11 @@ class _MyAppState extends State<MyApp> {
                   ),
                 ),
               ),
+              //dispay of all the button 
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  CalButton(
+                  CalButton( //imported from button.dart fort all the button 
                     text: "AC",
                     fillColor: opBtn,
                     textColor: Colors.white,
